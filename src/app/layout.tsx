@@ -17,8 +17,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <main className="max-w-4xl">{children}</main>
-        <BottomNavBar></BottomNavBar>
+        <main className="flex justify-center items-center">
+          <div className="container max-w-4xl">{children}</div>
+        </main>
+        <footer>
+          <BottomNavBar></BottomNavBar>
+        </footer>
       </body>
     </html>
   );

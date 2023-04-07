@@ -29,9 +29,6 @@ export default function ReadInput() {
               {testament[0]}
             </button>
             <select className="select select-bordered">
-              <option disabled selected>
-                어디를 읽을까?...
-              </option>
               {Books.map((book, index) => {
                 return <option key={index}>{book}</option>;
               })}

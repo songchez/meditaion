@@ -3,10 +3,11 @@ import { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
-export default function TextEditor() {
+export default function MeditEditor() {
   const [value, setValue] = useState("");
   return (
-    <div className="min-h-[300px]">
+    <div className="min-h-[150px]">
+      <h2 className="text-lg">📒 묵상노트</h2>
       <ReactQuill theme="snow" value={value} onChange={setValue} />
     </div>
   );

@@ -1,12 +1,12 @@
 export default function SearchBar() {
   return (
     <div className="flex justify-center items-center">
-      <div className="container form-control">
+      <div className="container form-control grid place-content-center">
         <div className="input-group w-full p-2">
           <input
             type="text"
             placeholder="검색"
-            className="input input-bordered input-primary"
+            className="input input-bordered"
           />
           <button className="btn btn-square">
             <svg

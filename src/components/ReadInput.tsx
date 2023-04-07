@@ -1,18 +1,40 @@
+"use client";
+
+import { newTestament, oldTestament } from "@/data/testaments";
+import { useState } from "react";
+
 export default function ReadInput() {
+  const [testament, setTestament] = useState(["구약", "bg-blue-500"]);
+  const [Books, setBooks] = useState(oldTestament);
+
+  const testamenthandler = () => {
+    if (testament[0] === "구약") {
+      setTestament(() => ["신약", "bg-red-500"]);
+      setBooks(() => newTestament);
+    } else {
+      setTestament(() => ["구약", "bg-blue-500"]);
+      setBooks(() => oldTestament);
+    }
+  };
+
   return (
-    <div className="grid py-3 gap-3 place-items-center">
+    <div className="grid py-3 gap-3 place-items-center ">
       <div>
         <div className="form-control">
           <div className="input-group">
-            <button className="btn">구약</button>
+            <button
+              className={`btn ${testament[1]} text-black hover:bg-transparent`}
+              onClick={testamenthandler}
+            >
+              {testament[0]}
+            </button>
             <select className="select select-bordered">
               <option disabled selected>
-                Pick category
+                어디를 읽을까?...
               </option>
-              <option>마태복음</option>
-              <option>마가복음</option>
-              <option>누가복음</option>
-              <option>요한복음</option>
+              {Books.map((book, index) => {
+                return <option key={index}>{book}</option>;
+              })}
             </select>
           </div>
         </div>

@@ -10,6 +10,11 @@ export default function Form({ type }: { type: "login" | "register" }) {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
+  let hideUsername = "";
+  if (type === "login") {
+    hideUsername = "hidden";
+  }
+
   return (
     <form
       onSubmit={(e) => {
@@ -89,7 +94,7 @@ export default function Form({ type }: { type: "login" | "register" }) {
           className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
         />
       </div>
-      <div>
+      <div className={hideUsername}>
         <label
           htmlFor="username"
           className="block text-xs text-gray-600 uppercase"
@@ -100,7 +105,6 @@ export default function Form({ type }: { type: "login" | "register" }) {
           id="username"
           name="username"
           type="username"
-          required
           className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
         />
       </div>

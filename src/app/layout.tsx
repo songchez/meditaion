@@ -23,7 +23,7 @@ export default async function RootLayout({
         <Toaster />
         {AuthStatusDiv}
         <main className="flex justify-center items-center">
-          <div className="container max-w-4xl">{children}</div>
+          <div className="container max-w-4xl p-5">{children}</div>
         </main>
         <footer>
           <BottomNavBar></BottomNavBar>

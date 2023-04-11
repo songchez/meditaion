@@ -5,6 +5,7 @@ import "react-quill/dist/quill.snow.css";
 
 export default function MeditEditor() {
   const [value, setValue] = useState("");
+
   return (
     <div className="min-h-[150px] rounded-2xl p-1">
       <ReactQuill

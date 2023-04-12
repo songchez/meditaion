@@ -3,6 +3,7 @@ import SearchBar from "@/components/SearchBar";
 import MeditEditor from "@/components/MeditEditor";
 import OnsubmitButton from "@/components/OnsubmitButton";
 import Link from "next/link";
+import CreatePost from "@/components/editor_test";
 
 export default function Editor() {
   return (
@@ -18,6 +19,7 @@ export default function Editor() {
       <ReadInput />
       <MeditEditor />
       <OnsubmitButton />
+      <CreatePost />
     </div>
   );
 }

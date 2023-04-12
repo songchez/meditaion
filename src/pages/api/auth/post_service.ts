@@ -1,7 +1,7 @@
 export interface Post {
   title: string;
   content: string;
-  authorId: number;
+  authorEmail: string;
 }
 
 // export const postService = {
@@ -15,19 +15,27 @@ export interface Post {
 // pages/api/posts.ts
 import prisma from "@/lib/prisma";
 import { NextApiRequest, NextApiResponse } from "next";
+import { Session } from "next-auth";
+import { getServerSession } from "next-auth/next";
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  const session = await getServerSession(); //user세션 가져오기 -> 쿼리문 작성
+
+  const sessionEmail: any = session?.user?.email;
+
   if (req.method === "POST") {
-    const { title, content, authorId }: Post = req.body;
+    const { title, content, authorEmail }: Post = req.body;
     const post = await prisma.post.create({
-      data: { title, content, authorId },
+      data: { title, content, authorEmail },
     });
     res.status(201).json(post);
   } else if (req.method === "GET") {
-    const posts = await prisma.post.findMany();
+    const posts = await prisma.post.findMany({
+      where: { authorEmail: sessionEmail },
+    });
     res.status(200).json(posts);
   } else {
     res.status(405).json({ message: "Method not allowed" });

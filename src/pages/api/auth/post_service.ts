@@ -32,7 +32,7 @@ export default async function handler(
       data: { title, content, authorEmail },
     });
     res.status(201).json(post);
-  } else if (req.method === "GET") {
+  } else if (req.method === "GET" && session !== null) {
     const posts = await prisma.post.findMany({
       where: { authorEmail: sessionEmail },
     });

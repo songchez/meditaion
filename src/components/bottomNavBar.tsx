@@ -11,7 +11,7 @@ export default function BottomNavBar() {
           <Link href="/dashboard">대시보드</Link>
         </li>
         <li>
-          <Link href="/meditation">묵상</Link>
+          <Link href="/meditations">묵상</Link>
         </li>
         <li>
           <Link href="/editor">글쓰기</Link>

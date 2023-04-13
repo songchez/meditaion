@@ -4,8 +4,12 @@ import MeditEditor from "@/components/MeditEditor";
 import OnsubmitButton from "@/components/OnsubmitButton";
 import Link from "next/link";
 import CreatePost from "@/components/editor_test";
+import { getServerSession } from "next-auth";
 
-export default function Editor() {
+export default async function Editor() {
+  const session = await getServerSession();
+  const sessionEmail: any = session?.user?.email;
+
   return (
     <div>
       <SearchBar />
@@ -19,7 +23,7 @@ export default function Editor() {
       <ReadInput />
       <MeditEditor />
       <OnsubmitButton />
-      <CreatePost />
+      <CreatePost sessionEmail={sessionEmail} />
     </div>
   );
 }

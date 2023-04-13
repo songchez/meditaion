@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 
-export default function CreatePost() {
+export default function CreatePost({ sessionEmail }: { sessionEmail: string }) {
   // const router = useRouter();
   const [formData, setFormData] = useState({ title: "", content: "" });
 
@@ -11,7 +11,7 @@ export default function CreatePost() {
     fetch("/api/post_service", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...formData }),
+      body: JSON.stringify({ ...formData, authorEmail: sessionEmail }),
     }).then(async (res) => {
       if (res.status === 200) {
         toast.success("묵상포스트가 생성되었습니다!");

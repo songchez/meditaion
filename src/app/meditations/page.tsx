@@ -1,4 +1,5 @@
 import { Post } from "@prisma/client";
+import { toast } from "react-hot-toast";
 
 type Props = {
   params: {
@@ -18,6 +19,11 @@ export default async function Meditations({ params: { posts } }: Props) {
 }
 
 export async function generateStaticParams() {
-  const posts = await fetch("/api/post_service", { method: "GET" });
-  return posts;
+  try {
+    const posts = await fetch("/api/post_service");
+    return posts;
+  } catch (error: any) {
+    toast.error(error);
+    return []; // or you can return an empty array or object
+  }
 }

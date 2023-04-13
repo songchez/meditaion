@@ -20,7 +20,7 @@ export default NextAuth({
         }
         const user = await prisma.user.findUnique({
           where: {
-            email,
+            email: email,
           },
         });
         // if user doesn't exist or password doesn't match

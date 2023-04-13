@@ -15,7 +15,6 @@ export interface Post {
 // pages/api/posts.ts
 import prisma from "@/lib/prisma";
 import { NextApiRequest, NextApiResponse } from "next";
-import { Session } from "next-auth";
 import { getServerSession } from "next-auth/next";
 
 export default async function handler(

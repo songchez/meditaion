@@ -1,22 +1,28 @@
 "use client";
 import { useState } from "react";
-import { useRouter } from "next/router";
+import { toast } from "react-hot-toast";
 
-const CreatePost = () => {
-  const router = useRouter();
+export default function CreatePost() {
+  // const router = useRouter();
   const [formData, setFormData] = useState({ title: "", content: "" });
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    const response = await fetch("/api/posts", {
+    fetch("/api/post_service", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...formData, authorId: 1 }),
+      body: JSON.stringify({ ...formData }),
+    }).then(async (res) => {
+      if (res.status === 200) {
+        toast.success("묵상포스트가 생성되었습니다!");
+      } else {
+        toast.error(await res.text());
+      }
     });
-    if (response.ok) {
-      const { id } = await response.json();
-      router.push(`/posts/${id}`);
-    }
+    // if (response.ok) {
+    //   const { id } = await response.json();
+    //   router.push(`/`);
+    // }
   };
 
   return (
@@ -36,9 +42,9 @@ const CreatePost = () => {
         onChange={(e) => setFormData({ ...formData, content: e.target.value })}
       />
 
-      <button type="submit">Create</button>
+      <button className="btn" type="submit">
+        Create
+      </button>
     </form>
   );
-};
-
-export default CreatePost;
+}

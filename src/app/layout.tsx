@@ -23,7 +23,7 @@ export default async function RootLayout({
       <body className={inter.className}>
         <Toaster />
         {AuthStatusDiv}
-        <main className="flex justify-center items-center">
+        <main className="flex justify-center items-center pt-10">
           <div className="container max-w-4xl p-5">{children}</div>
         </main>
         <footer>

@@ -18,7 +18,7 @@ export default function ReadInput() {
   };
 
   return (
-    <div className="grid py-3 gap-3 place-items-center ">
+    <div className="flex py-3 gap-3 items-center justify-center ">
       <div>
         <div className="form-control">
           <div className="input-group">

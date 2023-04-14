@@ -26,25 +26,26 @@ export default function CreatePost({ sessionEmail }: { sessionEmail: string }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="title">Title:</label>
-      <input
-        type="text"
-        name="title"
-        value={formData.title}
-        onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-      />
-      <div className="min-h-[150px] rounded-2xl p-1">
+      <div className="min-h-[300px] rounded-2xl p-3 bg-zinc-100 border-2 border-primary/50">
+        <input
+          type="text"
+          name="title"
+          placeholder="제목:"
+          onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+          className="input input-ghost w-full max-w-xs"
+        />
         <ReactQuill
           theme="snow"
           value={formData.content}
           onChange={(text) => setFormData({ ...formData, content: text })}
           placeholder="말씀을 읽으면서 📒 묵상한 내용을 적어보세요."
         />
+        <div className="flex justify-center m-4">
+          <button className="btn " type="submit">
+            <Image src={riceIcon} alt="send"></Image>
+          </button>
+        </div>
       </div>
-
-      <button className="btn" type="submit">
-        <Image src={riceIcon} alt="send"></Image>
-      </button>
     </form>
   );
 }

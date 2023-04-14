@@ -9,7 +9,7 @@ export default async function Editor() {
 
   return (
     <div>
-      <SearchBar />
+      {/* <SearchBar /> */}
       <ReadInput />
       <CreatePost sessionEmail={sessionEmail} />
     </div>

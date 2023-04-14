@@ -1,6 +1,10 @@
 "use client";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
+import Image from "next/image";
+import riceIcon from "public/icon_rice.svg";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 export default function CreatePost({ sessionEmail }: { sessionEmail: string }) {
   const [formData, setFormData] = useState({ title: "", content: "" });
@@ -31,14 +35,17 @@ export default function CreatePost({ sessionEmail }: { sessionEmail: string }) {
       />
 
       <label htmlFor="content">Content:</label>
-      <textarea
-        name="content"
-        value={formData.content}
-        onChange={(e) => setFormData({ ...formData, content: e.target.value })}
-      />
+      <div className="min-h-[150px] rounded-2xl p-1">
+        <ReactQuill
+          theme="snow"
+          value={formData.content}
+          onChange={(text) => setFormData({ ...formData, content: text })}
+          placeholder="말씀을 읽으면서 📒 묵상한 내용을 적어보세요."
+        />
+      </div>
 
       <button className="btn" type="submit">
-        Create
+        <Image src={riceIcon} alt="send"></Image>
       </button>
     </form>
   );

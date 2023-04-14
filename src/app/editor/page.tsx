@@ -1,9 +1,6 @@
 import ReadInput from "@/components/ReadInput";
 import SearchBar from "@/components/SearchBar";
-import MeditEditor from "@/components/MeditEditor";
-import OnsubmitButton from "@/components/OnsubmitButton";
-import Link from "next/link";
-import CreatePost from "@/components/editor_test";
+import CreatePost from "@/components/CreatePost";
 import { getServerSession } from "next-auth";
 
 export default async function Editor() {
@@ -14,8 +11,6 @@ export default async function Editor() {
     <div>
       <SearchBar />
       <ReadInput />
-      <MeditEditor />
-      <OnsubmitButton />
       <CreatePost sessionEmail={sessionEmail} />
     </div>
   );

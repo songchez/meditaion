@@ -1,7 +1,7 @@
 import "./globals.css";
 import BottomNavBar from "@/components/BottomNavBar";
 import { Inter } from "next/font/google";
-import AuthStatus from "@/components/auth-status";
+import AuthStatus from "@/components/auth/auth-status";
 import Toaster from "@/components/toaster";
 
 const inter = Inter({ subsets: ["latin"] });

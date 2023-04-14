@@ -3,7 +3,6 @@ import { useState } from "react";
 import { toast } from "react-hot-toast";
 
 export default function CreatePost({ sessionEmail }: { sessionEmail: string }) {
-  // const router = useRouter();
   const [formData, setFormData] = useState({ title: "", content: "" });
 
   const handleSubmit = async (e: any) => {
@@ -19,10 +18,6 @@ export default function CreatePost({ sessionEmail }: { sessionEmail: string }) {
         toast.error(await res.text());
       }
     });
-    // if (response.ok) {
-    //   const { id } = await response.json();
-    //   router.push(`/`);
-    // }
   };
 
   return (

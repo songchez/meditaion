@@ -19,7 +19,7 @@ export default async function RootLayout({
   const AuthStatusDiv = await AuthStatus();
 
   return (
-    <html lang="en">
+    <html lang="en" data-theme="pastel">
       <body className={inter.className}>
         <Toaster />
         {AuthStatusDiv}

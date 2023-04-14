@@ -26,13 +26,13 @@ export default function CreatePost({ sessionEmail }: { sessionEmail: string }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="min-h-[300px] rounded-2xl p-3 bg-zinc-100 border-2 border-primary/50">
+      <div className="min-h-[300px] rounded-2xl p-3 bg-transparent border-2 border-primary/50">
         <input
           type="text"
           name="title"
           placeholder="제목:"
           onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-          className="input input-ghost w-full max-w-xs"
+          className="input input-ghost w-full max-w-xs my-3 mx-1 text-primary-content"
         />
         <ReactQuill
           theme="snow"

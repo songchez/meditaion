@@ -8,7 +8,7 @@ export default function BottomNavBar() {
           <Link href="/">홈</Link>
         </li>
         <li>
-          <Link href="/dashboard">대시보드</Link>
+          <Link href="/tree">나무</Link>
         </li>
         <li>
           <Link href="/meditations">묵상</Link>

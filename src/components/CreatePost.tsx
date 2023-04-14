@@ -33,8 +33,6 @@ export default function CreatePost({ sessionEmail }: { sessionEmail: string }) {
         value={formData.title}
         onChange={(e) => setFormData({ ...formData, title: e.target.value })}
       />
-
-      <label htmlFor="content">Content:</label>
       <div className="min-h-[150px] rounded-2xl p-1">
         <ReactQuill
           theme="snow"

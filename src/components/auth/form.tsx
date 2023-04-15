@@ -4,7 +4,7 @@ import { signIn } from "next-auth/react";
 import LoadingDots from "@/components/auth/loading-dots";
 import toast from "react-hot-toast";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 
 export default function Form({ type }: { type: "login" | "register" }) {
   const [loading, setLoading] = useState(false);
@@ -31,6 +31,7 @@ export default function Form({ type }: { type: "login" | "register" }) {
             setLoading(false);
             if (ok) {
               router.push("/");
+              router.refresh();
             } else {
               toast.error(error);
             }
@@ -132,10 +133,10 @@ export default function Form({ type }: { type: "login" | "register" }) {
         </p>
       ) : (
         <p className="text-center text-sm text-gray-600">
-          Already have an account?{" "}
+          Already have an account?
           <Link href="/login" className="font-semibold text-gray-800">
             Sign in
-          </Link>{" "}
+          </Link>
           instead.
         </p>
       )}

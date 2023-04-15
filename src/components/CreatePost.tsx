@@ -26,13 +26,14 @@ export default function CreatePost({ sessionEmail }: { sessionEmail: string }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="min-h-[300px] rounded-2xl p-3 bg-transparent border-2 border-primary/50">
+      <div className="min-h-[300px] rounded-2xl p-3 bg-transparent shadow-sm shadow-secondary">
         <input
           type="text"
           name="title"
+          required
           placeholder="제목:"
           onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-          className="input input-ghost w-full max-w-xs my-3 mx-1 text-primary-content"
+          className="input input-ghost w-full max-w-xs my-3 mx-1 text-primary-content text-lg font-bold"
         />
         <ReactQuill
           theme="snow"
@@ -41,7 +42,10 @@ export default function CreatePost({ sessionEmail }: { sessionEmail: string }) {
           placeholder="말씀을 읽으면서 📒 묵상한 내용을 적어보세요."
         />
         <div className="flex justify-center m-4">
-          <button className="btn " type="submit">
+          <button
+            className="btn btn-circle btn-lg border-0 shadow-md shadow-primary"
+            type="submit"
+          >
             <Image src={riceIcon} alt="send"></Image>
           </button>
         </div>

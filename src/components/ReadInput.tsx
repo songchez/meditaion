@@ -25,7 +25,7 @@ export default function ReadInput() {
       <div className="flex py-3 gap-3 items-center justify-center ">
         <div>
           <div className="form-control">
-            <div className="input-group">
+            <div className="input-group shadow-sm shadow-secondary rounded-full">
               <button
                 className={`btn ${testament[1]} border-0 text-black hover:${testament[1]}`}
                 onClick={testamenthandler}
@@ -33,7 +33,7 @@ export default function ReadInput() {
                 {testament[0]}
               </button>
               <select
-                className="select select-bordered"
+                className="select"
                 onChange={(e) => {
                   setBook(e.target.value);
                 }}
@@ -46,12 +46,12 @@ export default function ReadInput() {
           </div>
         </div>
         <div className="flex justify-center">
-          <div className="form-control">
+          <div className="form-control shadow-secondary shadow-sm rounded-full">
             <div className="input-group">
               <input
                 type="text"
                 placeholder="장"
-                className="input input-bordered w-14"
+                className="input w-14"
                 onChange={(e) => {
                   let stlist = [...start];
                   stlist[0] = e.target.value;
@@ -61,7 +61,7 @@ export default function ReadInput() {
               <input
                 type="text"
                 placeholder="절"
-                className="input input-bordered w-14"
+                className="input w-14"
                 onChange={(e) => {
                   let stlist = [...start];
                   stlist[1] = e.target.value;
@@ -72,11 +72,11 @@ export default function ReadInput() {
           </div>
           <p className="text-xl p-2">~</p>
           <div className="form-control">
-            <div className="input-group">
+            <div className="input-group shadow-secondary shadow-sm rounded-full">
               <input
                 type="text"
                 placeholder="장"
-                className="input input-bordered w-14"
+                className="input w-14 "
                 onChange={(e) => {
                   let edlist = [...end];
                   edlist[0] = e.target.value;
@@ -86,7 +86,7 @@ export default function ReadInput() {
               <input
                 type="text"
                 placeholder="절"
-                className="input input-bordered w-14"
+                className="input w-14 "
                 onChange={(e) => {
                   let edlist = [...end];
                   edlist[1] = e.target.value;

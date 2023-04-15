@@ -15,11 +15,10 @@ async function getMeditaitons() {
 export default async function Meditations() {
   const posts = await getMeditaitons();
   return (
-    <div>
-      <h1>나의묵상들</h1>
-      <div>
+    <div className="p-5 flex justify-left items-center shadow-md shadow-primary rounded-3xl">
+      <div className="container">
         {posts.map((post) => {
-          return <div key={post.id}>{post.content}</div>;
+          return <div key={post.id}>{post.title}</div>;
         })}
       </div>
     </div>

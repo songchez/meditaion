@@ -4,12 +4,25 @@ import { newTestament, oldTestament } from "@/data/testaments";
 import { Dispatch, SetStateAction, useState } from "react";
 import WhereReadinput from "./whereReadinput";
 
-export default function ReadInput() {
+interface Props {
+  book: string;
+  setBook: any;
+  start: string[];
+  setStart: any;
+  end: string[];
+  setEnd: any;
+}
+
+export default function ReadInput({
+  book,
+  setBook,
+  start,
+  setStart,
+  end,
+  setEnd,
+}: Props) {
   const [testament, setTestament] = useState(["구약", "bg-secondary"]);
   const [books, setBooks] = useState(oldTestament);
-  const [book, setBook] = useState("창세기");
-  const [start, setStart] = useState(["1", "1"]);
-  const [end, setEnd] = useState(["1", "1"]);
 
   const testamenthandler = () => {
     if (testament[0] === "구약") {

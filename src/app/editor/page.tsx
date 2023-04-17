@@ -1,4 +1,3 @@
-import ReadInput from "@/components/ReadInput";
 import CreatePost from "@/components/CreatePost";
 import { getServerSession } from "next-auth";
 
@@ -9,7 +8,6 @@ export default async function Editor() {
 
   return (
     <div>
-      <ReadInput />
       <CreatePost sessionEmail={sessionEmail} />
     </div>
   );

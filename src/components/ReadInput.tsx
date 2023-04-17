@@ -1,7 +1,8 @@
 "use client";
 
 import { newTestament, oldTestament } from "@/data/testaments";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
+import WhereReadinput from "./whereReadinput";
 
 export default function ReadInput() {
   const [testament, setTestament] = useState(["구약", "bg-secondary"]);
@@ -20,6 +21,21 @@ export default function ReadInput() {
     }
   };
 
+  const bookSelectHandler = (e: { target: { value: string } }) => {
+    setBook(e.target.value);
+  };
+
+  const whereOnchangeHandler = (
+    e: { target: { value: string } },
+    idx: number,
+    value: string[],
+    setFunc: Dispatch<SetStateAction<string[]>>
+  ) => {
+    let stlist = [...value];
+    stlist[idx] = e.target.value;
+    setFunc(stlist);
+  };
+
   return (
     <div>
       <div className="flex py-3 gap-3 items-center justify-center ">
@@ -32,12 +48,7 @@ export default function ReadInput() {
               >
                 {testament[0]}
               </button>
-              <select
-                className="select"
-                onChange={(e) => {
-                  setBook(e.target.value);
-                }}
-              >
+              <select className="select" onChange={bookSelectHandler}>
                 {books.map((book, index) => {
                   return <option key={index}>{book}</option>;
                 })}
@@ -46,55 +57,17 @@ export default function ReadInput() {
           </div>
         </div>
         <div className="flex justify-center">
-          <div className="form-control shadow-secondary shadow-sm rounded-full">
-            <div className="input-group">
-              <input
-                type="text"
-                placeholder="장"
-                className="input w-14"
-                onChange={(e) => {
-                  let stlist = [...start];
-                  stlist[0] = e.target.value;
-                  setStart(stlist);
-                }}
-              />
-              <input
-                type="text"
-                placeholder="절"
-                className="input w-14"
-                onChange={(e) => {
-                  let stlist = [...start];
-                  stlist[1] = e.target.value;
-                  setStart(stlist);
-                }}
-              />
-            </div>
-          </div>
+          <WhereReadinput
+            setFunc={setStart}
+            value={start}
+            whereOnchangeHandler={whereOnchangeHandler}
+          />
           <p className="text-xl p-2">~</p>
-          <div className="form-control">
-            <div className="input-group shadow-secondary shadow-sm rounded-full">
-              <input
-                type="text"
-                placeholder="장"
-                className="input w-14 "
-                onChange={(e) => {
-                  let edlist = [...end];
-                  edlist[0] = e.target.value;
-                  setEnd(edlist);
-                }}
-              />
-              <input
-                type="text"
-                placeholder="절"
-                className="input w-14 "
-                onChange={(e) => {
-                  let edlist = [...end];
-                  edlist[1] = e.target.value;
-                  setEnd(edlist);
-                }}
-              />
-            </div>
-          </div>
+          <WhereReadinput
+            setFunc={setEnd}
+            value={end}
+            whereOnchangeHandler={whereOnchangeHandler}
+          />
         </div>
       </div>
       <div className="text-lg p-3 text-secondary-focus">{`${book} ${start[0]}장 ${start[1]}절 ~ ${end[0]}장 ${end[1]}절에 대한 묵상`}</div>

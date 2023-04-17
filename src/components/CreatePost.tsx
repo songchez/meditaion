@@ -18,7 +18,12 @@ export default function CreatePost({ sessionEmail }: { sessionEmail: string }) {
     fetch("/api/post_service", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...formData, authorEmail: sessionEmail }),
+      body: JSON.stringify({
+        ...formData,
+        authorEmail: sessionEmail,
+        whereRead: `${start[0]}장${start[1]}절 ~ ${end[0]}장${end[1]}절`,
+        testaBook: book,
+      }),
     }).then(async (res) => {
       if (res.status === 200) {
         toast.success("묵상포스트가 생성되었습니다!");
@@ -27,6 +32,10 @@ export default function CreatePost({ sessionEmail }: { sessionEmail: string }) {
       }
     });
   };
+  //TODO: 1.유저에 카운트
+  function UserCount() {}
+  //TODO: 2.글로벌에 카운트
+  function GlobalCount() {}
 
   return (
     <div>

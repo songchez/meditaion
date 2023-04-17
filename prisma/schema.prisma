@@ -14,8 +14,8 @@ model User {
   email        String   @unique
   password     String
   createdAt    DateTime @default(now())
-  countVerse   Int //몇 절 읽었니?
-  countChapter Int //몇 장 읽었니?
+  countVerse   Int @default(0) //몇 절 읽었니?
+  countChapter Int @default(0) //몇 장 읽었니?
 }
 
 model Post {

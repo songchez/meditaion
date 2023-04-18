@@ -49,6 +49,7 @@ export default async function handler(
     }
     const yesuJson: YesuJson[] = await getYesuResponse();
     if (yesuJson !== null) {
+      console.log(Number(end[0]), Number(start[0]));
       const incrChapter = Number(end[0]) - Number(start[0]);
       const incrVerse = yesuJson.length;
       const user = await prisma.user.update({
@@ -63,7 +64,20 @@ export default async function handler(
         },
       });
       res.status(200).json(yesuJson);
-      res.status(200).json(user);
+      // res.status(201).json(user);
+
+      const globalCount = await prisma.globalCount.update({
+        where: { id: 1 },
+        data: {
+          countVerse: {
+            increment: incrVerse,
+          },
+          countChapter: {
+            increment: incrChapter,
+          },
+        },
+      });
+      // res.status(203).json(globalCount);
     } else {
       res.status(401).json("오류: 데이타 없음!");
     }

@@ -23,7 +23,7 @@ export default function CreatePost({ sessionEmail }: { sessionEmail: string }) {
         ...formData,
         authorEmail: sessionEmail,
         whereRead: `${start[0]}장${start[1]}절 ~ ${end[0]}장${end[1]}절`,
-        testaBook: JSON.stringify(book),
+        testaBook: book,
       }),
     }).then(async (res) => {
       if (res.status === 200) {

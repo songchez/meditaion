@@ -1,11 +1,11 @@
 "use client";
 
-import { newTestament, oldTestament } from "@/data/testaments";
+import { testaments } from "@/data/testaments";
 import { Dispatch, SetStateAction, useState } from "react";
 import WhereReadinput from "./whereReadinput";
 
 interface Props {
-  book: string;
+  book: string[];
   setBook: any;
   start: string[];
   setStart: any;
@@ -22,23 +22,26 @@ export default function ReadInput({
   setEnd,
 }: Props) {
   const [testament, setTestament] = useState(["구약", "bg-secondary"]);
-  const [books, setBooks] = useState(oldTestament);
+  const [books, setBooks] = useState(testaments.old);
 
   const testamenthandler = () => {
+    //구약|신약 토글
     if (testament[0] === "구약") {
       setTestament(() => ["신약", "bg-primary"]);
-      setBooks(() => newTestament);
+      setBooks(() => testaments.new);
     } else {
       setTestament(() => ["구약", "bg-secondary"]);
-      setBooks(() => oldTestament);
+      setBooks(() => testaments.old);
     }
   };
 
   const bookSelectHandler = (e: { target: { value: string } }) => {
+    //선택값 적용 -> state공유 위해서 부모오브젝트로 옮김
     setBook(e.target.value);
   };
 
   const whereOnchangeHandler = (
+    //어디 읽었는지 바뀌었을때 변화. -> WhereReadinput의 onchange안에 있음
     e: { target: { value: string } },
     idx: number,
     value: string[],
@@ -63,7 +66,7 @@ export default function ReadInput({
               </button>
               <select className="select" onChange={bookSelectHandler}>
                 {books.map((book, index) => {
-                  return <option key={index}>{book}</option>;
+                  return <option key={index}>{book[0]}</option>;
                 })}
               </select>
             </div>
@@ -83,7 +86,7 @@ export default function ReadInput({
           />
         </div>
       </div>
-      <div className="text-lg p-3 text-secondary-focus">{`${book} ${start[0]}장 ${start[1]}절 ~ ${end[0]}장 ${end[1]}절에 대한 묵상`}</div>
+      <div className="text-lg p-3 text-secondary-focus">{`${book[0]} ${start[0]}장 ${start[1]}절 ~ ${end[0]}장 ${end[1]}절에 대한 묵상`}</div>
     </div>
   );
 }

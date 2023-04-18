@@ -9,7 +9,7 @@ import ReadInput from "./ReadInput";
 
 export default function CreatePost({ sessionEmail }: { sessionEmail: string }) {
   const [formData, setFormData] = useState({ title: "", content: "" });
-  const [book, setBook] = useState("창세기");
+  const [book, setBook] = useState(["창세기", "ge"]);
   const [start, setStart] = useState(["1", "1"]);
   const [end, setEnd] = useState(["1", "1"]);
 
@@ -22,7 +22,7 @@ export default function CreatePost({ sessionEmail }: { sessionEmail: string }) {
         ...formData,
         authorEmail: sessionEmail,
         whereRead: `${start[0]}장${start[1]}절 ~ ${end[0]}장${end[1]}절`,
-        testaBook: book,
+        testaBook: JSON.stringify(book),
       }),
     }).then(async (res) => {
       if (res.status === 200) {

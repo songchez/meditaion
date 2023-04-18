@@ -14,22 +14,26 @@ model User {
   email        String   @unique
   password     String
   createdAt    DateTime @default(now())
-  countVerse   Int @default(0) //몇 절 읽었니?
-  countChapter Int @default(0) //몇 장 읽었니?
+  profileUrl   String   @default("none")
+  countVerse   Int      @default(0) //몇 절 읽었니?
+  countChapter Int      @default(0) //몇 장 읽었니?
 }
 
 model Post {
-  id          Int      @id @default(autoincrement())
-  title       String
-  content     String
-  authorEmail String
-  createdAt   DateTime @default(now())
-  testaBook   String
-  whereRead   String
+  id           Int      @id @default(autoincrement())
+  title        String
+  content      String
+  authorEmail  String
+  createdAt    DateTime @default(now())
+  views        Int      @default(0)
+  likes        Int      @default(0)
+  mainImageUrl String   @default("none")
+  testaBook    String
+  whereRead    String
 }
 
 model GlobalCount {
   id           Int      @id @default(1)
-  countVerse   Int
-  countChapter Int
+  countVerse   Int      @default(0)
+  countChapter Int      @default(0)
 }

@@ -32,10 +32,6 @@ export default function CreatePost({ sessionEmail }: { sessionEmail: string }) {
       }
     });
   };
-  //TODO: 1.유저에 카운트
-  function UserCount() {}
-  //TODO: 2.글로벌에 카운트
-  function GlobalCount() {}
 
   return (
     <div>

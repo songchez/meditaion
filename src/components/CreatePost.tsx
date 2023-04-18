@@ -7,7 +7,6 @@ import riceIcon from "public/icon_rice.svg";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import ReadInput from "./ReadInput";
-import { UserCount } from "@/service/readCountService";
 
 export default function CreatePost({ sessionEmail }: { sessionEmail: string }) {
   const [formData, setFormData] = useState({ title: "", content: "" });
@@ -28,13 +27,22 @@ export default function CreatePost({ sessionEmail }: { sessionEmail: string }) {
       }),
     }).then(async (res) => {
       if (res.status === 200) {
-        await UserCount({
-          userEmail: sessionEmail,
-          book: book,
-          start: start,
-          end: end,
+        fetch("/api/readCountService", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            userEmail: sessionEmail,
+            book: book,
+            start: start,
+            end: end,
+          }),
+        }).then(async (res) => {
+          if (res.status === 200) {
+            toast.success("묵상포스트가 생성되었습니다!");
+          } else {
+            toast.error(await res.text());
+          }
         });
-        toast.success("묵상포스트가 생성되었습니다!");
       } else {
         toast.error(await res.text());
       }

@@ -31,7 +31,7 @@ export default function Form({ type }: { type: "login" | "register" }) {
             setLoading(false);
             if (ok) {
               router.push("/");
-              router.refresh();
+              // router.refresh();
             } else {
               toast.error(error);
             }

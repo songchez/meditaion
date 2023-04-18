@@ -7,6 +7,7 @@
 - [ ] DB Connection -> Post에 말씀저장 + 전체 수 DB에 저장
 - [ ] layout 구현. CSS CountUp animation
 - [ ] dark 모드 구현
+- [ ] 각 로딩화면 구현 -
 
 ## Authors
 

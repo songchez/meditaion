@@ -1,5 +1,5 @@
-import prisma from "@/lib/prisma";
 import { testaments, queryTestament } from "@/data/testaments";
+import prisma from "@/lib/prisma";
 
 //TODO: 1.유저에 카운트
 export async function UserCount({
@@ -9,7 +9,7 @@ export async function UserCount({
   end,
 }: {
   userEmail: string;
-  book: string[];
+  book: string;
   start: string[];
   end: string[];
 }) {
@@ -29,26 +29,33 @@ export async function UserCount({
   }
 
   async function getYesuResponse() {
-    const queryBook = queryFinder(book[0]);
-    const yesuJson = fetch(
-      `https://yesu.io/bible?lang=kor&doc=${queryBook}&start=${start[0]}:${start[1]}&end=${end[1]}:${end[0]}`
+    const queryBook = queryFinder(book);
+    console.log(queryBook, "asdsadad");
+    const yesuJson = await fetch(
+      `https://yesu.io/bible?lang=kor&doc=${queryBook}&start=${start[0]}:${start[1]}&end=${end[0]}:${end[1]}`
     );
     console.log(yesuJson, "YesuApi");
+    return yesuJson.body;
   }
 
-  const incrVerse = 1;
-  const incrChapter = 1;
-  const user = await prisma.user.update({
-    where: { email: userEmail },
-    data: {
-      countVerse: {
-        increment: incrVerse,
+  const yesuJson: any = await getYesuResponse();
+  if (yesuJson !== null) {
+    const incrChapter = Number(end[0]) - Number(start[0]);
+    const incrVerse = yesuJson.length;
+    await prisma.user.update({
+      where: { email: userEmail },
+      data: {
+        countVerse: {
+          increment: incrVerse,
+        },
+        countChapter: {
+          increment: incrChapter,
+        },
       },
-      countChapter: {
-        increment: incrChapter,
-      },
-    },
-  });
+    });
+  } else {
+    console.log("오류: 데이타 없음!");
+  }
 }
 //TODO: 2.글로벌에 카운트
 export async function GlobalCount() {}

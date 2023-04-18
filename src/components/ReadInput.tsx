@@ -5,7 +5,7 @@ import { Dispatch, SetStateAction, useState } from "react";
 import WhereReadinput from "./whereReadinput";
 
 interface Props {
-  book: string[];
+  book: string;
   setBook: any;
   start: string[];
   setStart: any;
@@ -66,7 +66,7 @@ export default function ReadInput({
               </button>
               <select className="select" onChange={bookSelectHandler}>
                 {books.map((book, index) => {
-                  return <option key={index}>{book[0]}</option>;
+                  return <option key={index}>{book}</option>;
                 })}
               </select>
             </div>
@@ -86,7 +86,7 @@ export default function ReadInput({
           />
         </div>
       </div>
-      <div className="text-lg p-3 text-secondary-focus">{`${book[0]} ${start[0]}장 ${start[1]}절 ~ ${end[0]}장 ${end[1]}절에 대한 묵상`}</div>
+      <div className="text-lg p-3 text-secondary-focus">{`${book} ${start[0]}장 ${start[1]}절 ~ ${end[0]}장 ${end[1]}절에 대한 묵상`}</div>
     </div>
   );
 }

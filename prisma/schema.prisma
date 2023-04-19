@@ -21,15 +21,16 @@ model User {
 
 model Post {
   id           Int      @id @default(autoincrement())
-  title        String
-  content      String
-  authorEmail  String
-  createdAt    DateTime @default(now())
-  views        Int      @default(0)
-  likes        Int      @default(0)
-  mainImageUrl String   @default("none")
-  testaBook    String
-  whereRead    String
+  title          String
+  content        String
+  authorEmail    String
+  createdAt      DateTime @default(now())
+  views          Int      @default(0)
+  likes          Int      @default(0)
+  mainImageUrl   String   @default("none")
+  testaBook      String
+  whereRead      String
+  whereReadQuery String   @default("")
 }
 
 model GlobalCount {

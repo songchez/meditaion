@@ -25,12 +25,21 @@ export default async function Meditations() {
             <div key={post.id}>
               <Link href={`meditations/${post.id}`}>
                 <div className="flex flex-col w-full border-opacity-50">
-                  <div className="grid h-14 card bg-base-200 rounded-box place-items-center">
-                    <div className="container flex gap-3 justify-between px-6">
-                      <h3 className="text-lg">{post.title}</h3>
-                      <p className="text-sm">
-                        {CreatedAt({ createdAt: post.createdAt })}
-                      </p>
+                  <div
+                    className={`grid card bg-secondary/10 border-1 border-opacity-40 border-slate-800 p-2 text-slate-800 shadow-sm shadow-primary rounded-box place-items-center`}
+                  >
+                    <div className="container flex gap-3 justify-between px-6 py-1">
+                      <div>
+                        <h3 className="text-base">{post.title}</h3>
+                        <p className="text-xs text-slate-500">
+                          {post.testaBook} {post.whereRead}
+                        </p>
+                      </div>
+                      <div>
+                        <p className="text-xs">
+                          {CreatedAt({ createdAt: post.createdAt })}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>

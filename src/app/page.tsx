@@ -16,7 +16,6 @@ export async function getTodayVerse() {
 
 export default async function Home() {
   const todayVerse: TodayVerse[] = await getTodayVerse();
-
   return (
     <div>
       <div className="p-8 rounded-2xl text-primary-content">
@@ -28,13 +27,13 @@ export default async function Home() {
           &quot;
         </div>
         <div className="w-full text-right">(요한복음 1장 1절 ~ 4절)</div>
-        <div>몇절 읽었을까?</div>
         <div>
-          <CountUp />
+          {/* @ts-expect-error Async Server Component */}
+          <CountUp who="user" />
         </div>
-        <div>몇장 읽었을까?</div>
         <div>
-          <CountUp />
+          {/* @ts-expect-error Async Server Component */}
+          <CountUp who="global" />
         </div>
       </div>
     </div>

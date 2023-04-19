@@ -7,6 +7,7 @@ export interface Post {
   authorEmail: string;
   whereRead: string;
   testaBook: string;
+  whereReadQuery: string;
 }
 
 export default async function handler(
@@ -14,10 +15,23 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method === "POST") {
-    const { title, content, authorEmail, whereRead, testaBook }: Post =
-      req.body;
+    const {
+      title,
+      content,
+      authorEmail,
+      whereRead,
+      testaBook,
+      whereReadQuery,
+    }: Post = req.body;
     const post = await prisma.post.create({
-      data: { title, content, authorEmail, whereRead, testaBook },
+      data: {
+        title,
+        content,
+        authorEmail,
+        whereRead,
+        testaBook,
+        whereReadQuery,
+      },
     });
     res.status(200).json(post);
   } else if (req.method === "GET") {

@@ -7,6 +7,7 @@ import riceIcon from "public/icon_rice.svg";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import ReadInput from "./ReadInput";
+import { testaments, queryTestament } from "@/data/testaments";
 
 export default function CreatePost({ sessionEmail }: { sessionEmail: string }) {
   const [formData, setFormData] = useState({ title: "", content: "" });
@@ -24,6 +25,9 @@ export default function CreatePost({ sessionEmail }: { sessionEmail: string }) {
         authorEmail: sessionEmail,
         whereRead: `${start[0]}장${start[1]}절 ~ ${end[0]}장${end[1]}절`,
         testaBook: book,
+        whereReadQuery: `https://yesu.io/bible?lang=kor&doc=${await queryFinder(
+          book
+        )}&start=${start[0]}:${start[1]}&end=${end[0]}:${end[1]}`,
       }),
     }).then(async (res) => {
       if (res.status === 200) {
@@ -89,4 +93,18 @@ export default function CreatePost({ sessionEmail }: { sessionEmail: string }) {
       </form>
     </div>
   );
+}
+//권(ex: 창세기)인덱스 찾아서 쿼리텍스트 찾아주는 함수
+export function queryFinder(searchValue: string) {
+  let findValueidx = testaments.old.findIndex((e) => e === searchValue);
+  if (findValueidx === undefined) {
+    findValueidx = testaments.new.findIndex((e) => e === searchValue);
+    if (findValueidx === undefined) {
+      console.log("오류 : ", searchValue, "를 찾을 수 없습니다.");
+    } else {
+      return queryTestament.new[findValueidx];
+    }
+  } else {
+    return queryTestament.old[findValueidx];
+  }
 }

@@ -3,7 +3,7 @@ import prisma from "@/lib/prisma";
 
 interface Props {
   who: string;
-  userEmail: string;
+  userEmail?: string;
 }
 
 export default async function CountUp({ who }: { who: string }) {
@@ -14,24 +14,30 @@ export default async function CountUp({ who }: { who: string }) {
     who: who,
     userEmail: await sessionEmail,
   });
-
-  return (
-    <div className="rounded-box p-3 shadow-lg">
-      {who === "global" ? <span>함께</span> : <span>당신</span>}
-      <p className="font-mono text-2xl text-center">
-        {countdata.countChapter}장 / {countdata.countVerse}절
-      </p>
-      읽음
-    </div>
-  );
+  if (countdata !== null) {
+    return (
+      <div className="rounded-box p-3 shadow-lg">
+        {who === "global" ? <span>함께</span> : <span>당신</span>}
+        <p className="font-mono text-2xl text-center">
+          {countdata.countChapter}장 / {countdata.countVerse}절
+        </p>
+      </div>
+    );
+  } else {
+    return <div></div>;
+  }
 }
 
 export async function getCount({ who, userEmail }: Props) {
   if (who === "user") {
-    const user = await prisma.user.findUnique({
-      where: { email: userEmail },
-    });
-    return user;
+    if (userEmail !== undefined) {
+      const user = await prisma.user.findUnique({
+        where: { email: userEmail },
+      });
+      return user;
+    } else {
+      return null;
+    }
   } else if (who === "global") {
     const globalCount = await prisma.globalCount.findFirst({
       where: { id: 1 },

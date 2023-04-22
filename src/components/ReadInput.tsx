@@ -54,7 +54,7 @@ export default function ReadInput({
 
   return (
     <div>
-      <div className="flex py-3 gap-3 items-center justify-center ">
+      <div className="flex py-3 gap-3 items-center justify-center">
         <div>
           <div className="form-control">
             <div className="input-group shadow-sm shadow-secondary rounded-full">

@@ -5,7 +5,7 @@ import Link from "next/link";
 export default async function Navbar() {
   const session = await getServerSession();
   return (
-    <div className="navbar rounded-full shadow-sm shadow-secondary">
+    <div className="navbar rounded-full shadow-sm shadow-secondary text-primary-content">
       <div className="flex-1">
         <Link className="btn btn-ghost normal-case text-xl" href="/">
           바이블노트

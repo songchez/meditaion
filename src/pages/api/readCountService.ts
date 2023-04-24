@@ -1,4 +1,4 @@
-import { queryFinder } from "@/components/CreatePost";
+import { QueryFinder } from "@/components/utils/Queryfinder";
 import prisma from "@/lib/prisma";
 import { NextApiRequest, NextApiResponse } from "next";
 
@@ -17,22 +17,23 @@ export default async function handler(
   if (req.method === "POST") {
     const { userEmail, book, start, end }: CountData = req.body;
     //말씀 데이터 패치해오고 데이터 넣기
-    async function getYesuResponse(book: any) {
-      const queryBook = queryFinder(book);
-      const whereReadQuery = `https://yesu.io/bible?lang=kor&doc=${queryBook}&start=${start[0]}:${start[1]}&end=${end[0]}:${end[1]}`;
-      const res = await fetch(whereReadQuery);
-      if (!res.ok) {
-        throw new Error("오류 : 왜않되????????????");
-      }
-      return await res.json();
+
+    const queryBook: string = await QueryFinder(book);
+    const whereReadQuery = `https://yesu.io/bible?lang=kor&doc=${queryBook}&start=${start[0]}:${start[1]}&end=${end[0]}:${end[1]}`;
+    const yesu_res = await fetch(whereReadQuery);
+    if (!yesu_res.ok) {
+      throw new Error("오류 : 왜않되????????????");
     }
+    const yesuJson: YesuJson[] = await yesu_res.json();
+
     //패치해온 후 업데이트(count데이터 increment)
-    const yesuJson: YesuJson[] = await getYesuResponse(book);
     if (yesuJson !== null) {
-      console.log(Number(end[0]), Number(start[0]));
+      //장수 : 더해서 넣기
       const incrChapter = Number(end[0]) - Number(start[0]);
+      //절수 : 길이계산해서 넣기
       const incrVerse = yesuJson.length;
-      const user = await prisma.user.update({
+
+      await prisma.user.update({
         where: { email: userEmail },
         data: {
           countVerse: {
@@ -47,7 +48,7 @@ export default async function handler(
       // res.status(201).json(user);
 
       //2.글로벌에 카운트
-      const globalCount = await prisma.globalCount.update({
+      await prisma.globalCount.update({
         where: { id: 1 },
         data: {
           countVerse: {

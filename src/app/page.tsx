@@ -6,14 +6,6 @@ interface TodayVerse {
   message: string;
 }
 
-export async function getTodayVerse() {
-  const todayVerse = await fetch(
-    "https://yesu.io/bible?lang=kor&doc=john&start=1:1&end=1:4"
-  ).then((res) => res.json());
-
-  return todayVerse;
-}
-
 export default async function Home() {
   const todayVerse: TodayVerse[] = await getTodayVerse();
   return (
@@ -38,4 +30,12 @@ export default async function Home() {
       </div>
     </div>
   );
+}
+
+async function getTodayVerse() {
+  const todayVerse = await fetch(
+    "https://yesu.io/bible?lang=kor&doc=john&start=1:1&end=1:4"
+  ).then((res) => res.json());
+
+  return todayVerse;
 }

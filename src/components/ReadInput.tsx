@@ -2,7 +2,7 @@
 
 import { testaments } from "@/data/testaments";
 import { Dispatch, SetStateAction, useState } from "react";
-import WhereReadinput from "./whereReadinput";
+import WhereReadinput from "@/components/whereReadinput";
 
 interface Props {
   book: string;

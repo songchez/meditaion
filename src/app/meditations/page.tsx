@@ -1,4 +1,4 @@
-import CreatedAt from "@/components/CreatedAt";
+import CreatedAt from "@/components/utils/createdAt";
 import prisma from "@/lib/prisma";
 import { getServerSession } from "next-auth";
 import Link from "next/link";

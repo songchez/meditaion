@@ -1,4 +1,4 @@
-import CreatePost from "@/components/CreatePost";
+import CreatePost from "@/components/createPost";
 import { getServerSession } from "next-auth";
 
 export default async function Editor() {

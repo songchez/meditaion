@@ -6,7 +6,7 @@ import Image from "next/image";
 import riceIcon from "public/icon_rice.svg";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import { QueryFinder } from "@/components/utils/Queryfinder";
+import { QueryFinder } from "@/components/utils/queryfinder";
 import ReadInput from "@/components/ReadInput";
 
 export default function CreatePost({ sessionEmail }: { sessionEmail: string }) {

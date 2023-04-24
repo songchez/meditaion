@@ -1,4 +1,4 @@
-import { QueryFinder } from "@/components/utils/Queryfinder";
+import { QueryFinder } from "@/components/utils/queryfinder";
 import prisma from "@/lib/prisma";
 import { NextApiRequest, NextApiResponse } from "next";
 

@@ -6,8 +6,8 @@ import Image from "next/image";
 import riceIcon from "public/icon_rice.svg";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import { QueryFinder } from "@/components/utils/Queryfinder";
-import ReadInput from "@/components/ReadInput";
+import { QueryFinder } from "@/components/utils/queryfinder";
+import ReadInput from "@/components/readInput";
 
 export default function CreatePost({ sessionEmail }: { sessionEmail: string }) {
   const [formData, setFormData] = useState({ title: "", content: "" });

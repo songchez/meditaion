@@ -1,6 +1,6 @@
 import { Post } from "@prisma/client";
 import prisma from "@/lib/prisma";
-import PostPageForRead from "@/components/PostPageForRead";
+import PostPageForRead from "@/components/postPageForRead";
 
 async function getPost(postId: string) {
   const post = await prisma.post.findUnique({

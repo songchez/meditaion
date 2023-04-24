@@ -1,4 +1,4 @@
-import CountUp from "@/components/CountUp";
+import CountUp from "@/components/countUp";
 
 interface TodayVerse {
   chapter: string;

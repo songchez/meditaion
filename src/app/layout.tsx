@@ -16,14 +16,14 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const DivNavbar = await Navbar();
   return (
     <html lang="en" data-theme="pastel">
       <body className={inter.className}>
         <Toaster />
         <main className="flex justify-center items-center ">
           <div className="container max-w-2xl p-5">
-            {DivNavbar}
+            {/* @ts-expect-error Async Server Component */}
+            <Navbar />
             {children}
           </div>
         </main>

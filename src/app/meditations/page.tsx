@@ -2,21 +2,26 @@ import CreatedAt from "@/components/utils/createdAt";
 import prisma from "@/lib/prisma";
 import { getServerSession } from "next-auth";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 async function getMeditaitons() {
-  const session = await getServerSession();
-  const sessionEmail: any = session?.user?.email;
-
-  const posts = await prisma.post.findMany({
-    where: { authorEmail: sessionEmail },
-    orderBy: { createdAt: "desc" },
-  });
-  return posts;
+  const session: { user: { email: string } } | null = await getServerSession();
+  if (session !== null && session.user.email.length > 0) {
+    const sessionEmail: string = session.user.email;
+    const posts = await prisma.post.findMany({
+      where: { authorEmail: sessionEmail },
+      orderBy: { createdAt: "desc" },
+    });
+    return posts;
+  }
 }
 
 export default async function Meditations() {
   const posts = await getMeditaitons();
 
+  if (posts === undefined) {
+    return notFound;
+  }
   return (
     <div className="p-5 mt-3 flex justify-left items-center shadow-md shadow-primary rounded-3xl">
       <div className="container grid gap-2">

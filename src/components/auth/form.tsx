@@ -24,7 +24,7 @@ export default function Form({ type }: { type: "login" | "register" }) {
         // 로그인
         if (type === "login") {
           signIn("credentials", {
-            redirect: false,
+            redirect: true,
             email: e.currentTarget.email.value,
             password: e.currentTarget.password.value,
             // @ts-ignore

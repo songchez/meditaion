@@ -13,7 +13,7 @@ export default async function CountUp({ who }: { who: string }) {
     const sessionEmail = session.user.email;
     const countdata: any = await getCount({
       who: who,
-      userEmail: await sessionEmail,
+      userEmail: sessionEmail,
     });
     if (countdata !== null) {
       return (

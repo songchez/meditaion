@@ -1,5 +1,3 @@
-"use client";
-
 import CreatedAt from "@/components/utils/createdAt";
 import prisma from "@/lib/prisma";
 import { getServerSession } from "next-auth";
@@ -20,6 +18,7 @@ async function getMeditaitons() {
 
 export default async function Meditations() {
   const posts = await getMeditaitons();
+
   if (posts === undefined) {
     return notFound;
   }

@@ -1,21 +1,14 @@
+"use client";
+
 import CreatedAt from "@/components/utils/createdAt";
 import prisma from "@/lib/prisma";
-import { Session } from "next-auth";
-import { getSession } from "next-auth/react";
+import { getServerSession } from "next-auth";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
 async function getMeditaitons() {
-  const session: Session | null = await getSession();
-  if (
-    //이렇게 하는게 맞나싶다... null safty getServerSession에서는 어떻게 해야하지?
-    //지금이걸 미들웨어로 추가하면 될듯
-    session !== null &&
-    session.user !== undefined &&
-    session.user.email !== null &&
-    session.user.email !== undefined &&
-    session.user.email.length > 0
-  ) {
+  const session: { user: { email: string } } | null = await getServerSession();
+  if (session !== null && session.user.email.length > 0) {
     const sessionEmail: string = session.user.email;
     const posts = await prisma.post.findMany({
       where: { authorEmail: sessionEmail },

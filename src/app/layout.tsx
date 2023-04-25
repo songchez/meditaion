@@ -28,7 +28,7 @@ export default async function RootLayout({
           </div>
         </main>
         <footer className="max-w-2xl">
-          <BottomNavBar></BottomNavBar>
+          <BottomNavBar />
         </footer>
       </body>
     </html>

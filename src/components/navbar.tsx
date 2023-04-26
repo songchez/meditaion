@@ -1,10 +1,11 @@
 import { getServerSession } from "next-auth/next";
 import SignOut from "./signOut";
 import Link from "next/link";
-import { getCurrentUserEmail } from "./utils/getSession";
+import { getCurrentUser } from "./utils/getSession";
+import Image from "next/image";
 
 export default async function Navbar() {
-  const sessionEmail = await getCurrentUserEmail();
+  const session = await getCurrentUser();
   return (
     <div className="navbar rounded-full shadow-sm shadow-secondary text-primary-content">
       <div className="flex-1">
@@ -12,14 +13,21 @@ export default async function Navbar() {
           바이블노트
         </Link>
       </div>
-      {sessionEmail !== null ? (
+      {session !== null ? (
         <div className="flex-none gap-2">
           <div className="dropdown dropdown-end">
             <label
               tabIndex={0}
               className="btn btn-ghost btn-circle avatar shadow-sm"
             >
-              <div className="w-10 rounded-full">{sessionEmail}</div>
+              <div className="w-10 rounded-full">
+                <Image
+                  src={session.image}
+                  alt={session.name}
+                  width={50}
+                  height={50}
+                ></Image>
+              </div>
             </label>
             <ul
               tabIndex={0}

@@ -4,12 +4,15 @@ import { getServerSession } from "next-auth/next";
 // https://next-auth.js.org/configuration/nextjs#in-app-directory
 
 // 세션 가져오기 -> 유저이메일 가져오기 props로 넣기
-export async function getCurrentUserEmail() {
-  const session: { user: { email: string } } | null = await getServerSession();
-  console.log(session, "세션세션");
+export async function getCurrentUser() {
+  const session: {
+    user: { email: string; name: string; image: string };
+  } | null = await getServerSession();
   if (session !== null && session.user.email.length > 0) {
-    const sessionEmail: string = session.user.email;
-    return sessionEmail;
+    const email: string = session.user.email;
+    const name: string = session.user.name;
+    const image: string = session.user.image;
+    return { email, name, image };
   } else {
     return null;
   }

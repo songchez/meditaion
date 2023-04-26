@@ -1,5 +1,5 @@
 import prisma from "@/lib/prisma";
-import { getCurrentUserEmail } from "./utils/getSession";
+import { getCurrentUser } from "./utils/getSession";
 
 interface Props {
   who: string;
@@ -26,11 +26,11 @@ export async function getCount({ who, userEmail }: Props) {
 }
 
 export default async function CountUp({ who }: { who: string }) {
-  const sessionEmail = await getCurrentUserEmail();
-  if (sessionEmail !== null) {
+  const session = await getCurrentUser();
+  if (session !== null) {
     const countdata: any = await getCount({
       who: who,
-      userEmail: sessionEmail,
+      userEmail: session.email,
     });
     if (countdata !== null) {
       return (

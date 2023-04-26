@@ -1,13 +1,13 @@
 import CreatePost from "@/components/createPost";
-import { getCurrentUserEmail } from "@/components/utils/getSession";
+import { getCurrentUser } from "@/components/utils/getSession";
 import { notFound } from "next/navigation";
 
 export default async function Editor() {
-  const sessionEmail = await getCurrentUserEmail();
-  if (sessionEmail !== null) {
+  const session = await getCurrentUser();
+  if (session !== null) {
     return (
       <div>
-        <CreatePost sessionEmail={sessionEmail} />
+        <CreatePost sessionEmail={session.email} />
       </div>
     );
   }

@@ -1,14 +1,14 @@
 import CreatedAt from "@/components/utils/createdAt";
-import { getCurrentUserEmail } from "@/components/utils/getSession";
+import { getCurrentUser } from "@/components/utils/getSession";
 import prisma from "@/lib/prisma";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
 async function getMeditaitons() {
-  const sessionEmail = await getCurrentUserEmail();
-  if (sessionEmail !== null) {
+  const session = await getCurrentUser();
+  if (session !== null) {
     const posts = await prisma.post.findMany({
-      where: { authorEmail: sessionEmail },
+      where: { authorEmail: session.email },
       orderBy: { createdAt: "desc" },
     });
     return posts;

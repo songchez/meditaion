@@ -1,5 +1,5 @@
 import { getServerSession } from "next-auth/next";
-import SignOut from "./auth/sign-out";
+import SignOut from "./signOut";
 import Link from "next/link";
 
 export default async function Navbar() {

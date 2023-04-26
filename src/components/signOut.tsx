@@ -1,6 +1,6 @@
 "use client";
-import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { signOut } from "next-auth/react";
 
 export default function SignOut() {
   const router = useRouter();
@@ -9,7 +9,7 @@ export default function SignOut() {
       className=" hover:text-stone-200 transition-all"
       onClick={() => {
         signOut();
-        router.push("/");
+        router.refresh();
       }}
     >
       로그아웃

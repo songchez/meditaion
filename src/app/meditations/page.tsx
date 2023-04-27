@@ -30,7 +30,7 @@ export default async function Meditations() {
               <Link href={`meditations/${post.id}`}>
                 <div className="flex flex-col w-full border-opacity-50">
                   <div
-                    className={`grid card bg-secondary/10 border-1 border-opacity-40 border-slate-800 p-2 text-slate-800 shadow-sm shadow-primary rounded-box place-items-center`}
+                    className={`grid card bg-secondary/10 border-1 border-opacity-40 border-slate-800 p-2 text-primary-content shadow-sm shadow-primary rounded-box place-items-center`}
                   >
                     <div className="container flex gap-3 justify-between px-6 py-1">
                       <div>

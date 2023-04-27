@@ -1,11 +1,12 @@
-import { getServerSession } from "next-auth/next";
 import SignOut from "./signOut";
 import Link from "next/link";
 import { getCurrentUser } from "./utils/getSession";
 import Image from "next/image";
+import ThemeToggle from "./themeToggle";
 
 export default async function Navbar() {
   const session = await getCurrentUser();
+
   return (
     <div className="navbar rounded-full shadow-sm shadow-secondary text-primary-content">
       <div className="flex-1">
@@ -13,6 +14,7 @@ export default async function Navbar() {
           바이블노트
         </Link>
       </div>
+      <ThemeToggle />
       {session !== null ? (
         <div className="flex-none gap-2">
           <div className="dropdown dropdown-end">

@@ -17,11 +17,11 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" data-theme="pastel">
+    <html lang="ko" data-theme={"pastel"}>
       <body className={inter.className}>
         <Toaster />
         <main className="flex justify-center items-center ">
-          <div className="container max-w-2xl p-5">
+          <div className="container max-w-2xl min-h-screen p-5">
             {/* @ts-expect-error Async Server Component */}
             <Navbar />
             {children}

@@ -53,7 +53,7 @@ export default function CreatePost({ sessionEmail }: { sessionEmail: string }) {
   };
 
   return (
-    <div>
+    <div className="mb-36">
       <ReadInput
         book={book}
         setBook={setBook}

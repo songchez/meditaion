@@ -13,6 +13,7 @@ interface Props {
   setEnd: any;
 }
 
+//어디 몇장 몇절인지 선택폼.
 export default function ReadInput({
   book,
   setBook,
@@ -54,7 +55,7 @@ export default function ReadInput({
 
   return (
     <div>
-      <div className="flex py-3 gap-3 items-center justify-center">
+      <div className="flex py-3 gap-3 items-center justify-center max-[430px]:flex-col">
         <div>
           <div className="form-control">
             <div className="input-group shadow-sm shadow-secondary rounded-full">

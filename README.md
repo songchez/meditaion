@@ -12,10 +12,12 @@
   4. - [x] 홈 -> 모두가 얼마나 읽었는지 보이기.(data fetch), CountUp animation
   5. - [x] Bottom Navbar 수정
   6. - [x] 트리 페이지 간단하게 만들기 - 보류
-- [ ] dark 모드 구현
+- [x] vercel에 배포하기
+- [x] 자잘한 인터랙티브 수정
+- [ ] dark 모드 구현 -> 다크모드 css수정
 - [ ] 각 로딩화면 구현
 - [ ] 포스트 삭제 메소드 구현
-- [ ] 자잘한 인터랙티브 수정
+- [ ] 인용하기 기능
 
 ## Authors
 
@@ -40,5 +42,10 @@ Install 성경묵상웹앱 with npm
 [MIT](https://choosealicense.com/licenses/mit/)
 
 ## 기술스택
+
+Frontend : Next.js 13, daisyUI
+Backend : Prisma, Nextauth
+FrontServer : Vercel
+Backserver : PlanetScale
 
 [![My Tech Stack](https://github-readme-tech-stack.vercel.app/api/cards?title=%EA%B8%B0%EC%88%A0%EC%8A%A4%ED%83%9D&fontFamily=Dongle&lineHeight=6&lineCount=2&theme=2077&line1=Next.js,Next.js,000000;planetscale,planetscale,000000;daisyui,daisyui,5A0EF8;&line2=node.js,node.js,0d5cee;tailwindcss,tailwindcss,aaef4b;)](https://github-readme-tech-stack.vercel.app/api/cards?title=%EA%B8%B0%EC%88%A0%EC%8A%A4%ED%83%9D&fontFamily=Dongle&lineHeight=6&lineCount=2&theme=2077&line1=Next.js,Next.js,000000;planetscale,planetscale,000000;daisyui,daisyui,5A0EF8;&line2=node.js,node.js,0d5cee;tailwindcss,tailwindcss,aaef4b;)

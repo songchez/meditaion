@@ -18,7 +18,7 @@ export default async function Home() {
           })}
           &quot;
         </div>
-        <div className="w-full text-right">(요한복음 1장 1절 ~ 4절)</div>
+        <div className="w-full text-right pb-4">(디모데후서 3장 15절)</div>
         <div>
           {/* @ts-expect-error Async Server Component */}
           <CountUp who="user" />
@@ -34,7 +34,7 @@ export default async function Home() {
 
 async function getTodayVerse() {
   const todayVerse = await fetch(
-    "https://yesu.io/bible?lang=kor&doc=john&start=1:1&end=1:4"
+    `https://yesu.io/bible?lang=kor&doc=2tim&start=3:15&end=3:15`
   ).then((res) => res.json());
 
   return todayVerse;

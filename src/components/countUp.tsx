@@ -37,7 +37,7 @@ export default async function CountUp({ who }: { who: string }) {
         <div className="rounded-box p-3 shadow-md shadow-secondary">
           {who === "global" ? <span>함께</span> : <span>나</span>}
           <p className="font-mono text-2xl text-center">
-            {countdata.countChapter}장 / {countdata.countVerse}절
+            {countdata.countChapter}장 | {countdata.countVerse}절
           </p>
         </div>
       );

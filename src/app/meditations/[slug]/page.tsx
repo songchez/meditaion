@@ -63,7 +63,7 @@ export default async function Postpage({ params: { slug } }: Ppost) {
                         <span className="font-medium">
                           {currentVerse.verse}
                         </span>
-                        {currentVerse.message}
+                        : {currentVerse.message}
                       </p>
                     </div>
                   );

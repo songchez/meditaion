@@ -30,7 +30,7 @@ export default async function Postpage({ params: { slug } }: Ppost) {
     const currentVerses: YesuJson[] = await getVerse(post.whereReadQuery);
 
     return (
-      <div className="p-5 grid gap-2">
+      <div className="p-5 grid gap-2 mb-14">
         <h1 className="text-3xl font-bold text-center">{post.title}</h1>
 
         <h2 className="text-sm text-gray-500 text-center">

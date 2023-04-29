@@ -7,8 +7,8 @@ import Navbar from "@/components/navbar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Bible30000",
-  description: "Bible 30000 Project",
+  title: "묵상노트",
+  description: "묵상을 기록하고 되새김질하세요",
 };
 
 export default async function RootLayout({

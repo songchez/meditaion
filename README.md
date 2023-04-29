@@ -22,6 +22,7 @@
 - [ ] 인용하기 기능
 
 - [ ] 로딩화면 디테일 잡기, CountUp UI
+- [ ] Buy me a Coffee
 
 ## Authors
 

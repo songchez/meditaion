@@ -60,7 +60,7 @@ export default function ReadInput({
           <div className="form-control">
             <div className="input-group shadow-sm shadow-secondary rounded-full">
               <button
-                className={`btn ${testament[1]} border-0 text-black hover:${testament[1]}`}
+                className={`btn ${testament[1]} border-0 text-primary-content`}
                 onClick={testamenthandler}
               >
                 {testament[0]}

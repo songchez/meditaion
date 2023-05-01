@@ -31,7 +31,7 @@ export default function CreatePost({ sessionEmail }: { sessionEmail: string }) {
         whereReadQuery: `https://yesu.io/bible?lang=kor&doc=${queryBook}&start=${start[0]}:${start[1]}&end=${end[0]}:${end[1]}`,
       }),
     }).then(async (res) => {
-      if (res.status === 200) {
+      if (res.status === 201) {
         fetch("/api/readCountService", {
           method: "POST",
           headers: { "Content-Type": "application/json" },

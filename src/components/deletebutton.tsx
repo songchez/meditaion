@@ -18,6 +18,7 @@ export default function Deletebutton({ slug }: { slug: string }) {
       onClick={async () =>
         await delOnClickHandler(slug).then(() => router.push("/meditations"))
       }
+      // TODO: 임시방편
       disabled={true}
     >
       <div className="flex justify-center items-center">

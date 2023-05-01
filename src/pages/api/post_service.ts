@@ -22,9 +22,7 @@ export default async function handler(
       take: 15,
     });
     res.status(200).json(posts);
-  }
-
-  if (req.method === "POST") {
+  } else if (req.method === "POST") {
     const {
       title,
       content,
@@ -44,15 +42,13 @@ export default async function handler(
       },
     });
     res.status(201).json(post);
-  }
-
-  if (req.method === "DELETE") {
+  } else if (req.method === "DELETE") {
     const { postId } = req.body;
     const deletePost = await prisma.post.delete({
       where: { id: Number(postId) },
     });
     res.status(204).json("삭제완료");
+  } else {
+    res.status(405).json({ message: "Method not allowed" });
   }
-
-  res.status(405).json({ message: "Method not allowed" });
 }

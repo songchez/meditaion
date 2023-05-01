@@ -5,6 +5,8 @@ interface Props {
   who: string;
   userEmail?: string;
 }
+export const revalidate = 120;
+
 export async function getCount({ who, userEmail }: Props) {
   if (who === "user") {
     if (userEmail !== undefined) {

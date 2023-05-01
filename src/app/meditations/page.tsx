@@ -4,6 +4,8 @@ import prisma from "@/lib/prisma";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+export const revalidate = 20;
+
 async function getMeditaitons() {
   const session = await getCurrentUser();
   if (session !== null) {

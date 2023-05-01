@@ -44,11 +44,11 @@ export default async function handler(
           },
         },
       });
-      res.status(200).json(yesuJson);
+      // res.status(200).json(yesuJson);
       // res.status(201).json(user);
 
       // 2.글로벌에 카운트
-      await prisma.globalCount.update({
+      const globalCount = await prisma.globalCount.update({
         where: { id: 1 },
         data: {
           countVerse: {
@@ -59,7 +59,7 @@ export default async function handler(
           },
         },
       });
-      // res.status(203).json(globalCount);
+      res.status(200).json(globalCount);
     } else {
       res.status(401).json("오류: 데이타 없음!");
     }

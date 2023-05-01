@@ -14,6 +14,16 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  if (req.method === "GET") {
+    const { authorEmail } = req.body;
+    const posts = await prisma.post.findMany({
+      where: { authorEmail: authorEmail },
+      orderBy: { createdAt: "desc" },
+      take: 15,
+    });
+    res.status(200).json(posts);
+  }
+
   if (req.method === "POST") {
     const {
       title,
@@ -33,16 +43,16 @@ export default async function handler(
         whereReadQuery,
       },
     });
-    res.status(200).json(post);
-  } else if (req.method === "GET") {
-    const { authorEmail } = req.body;
-    const posts = await prisma.post.findMany({
-      where: { authorEmail: authorEmail },
-      orderBy: { createdAt: "desc" },
-      take: 15,
-    });
-    res.status(200).json(posts);
-  } else {
-    res.status(405).json({ message: "Method not allowed" });
+    res.status(201).json(post);
   }
+
+  if (req.method === "DELETE") {
+    const { postId } = req.body;
+    const deletePost = await prisma.post.delete({
+      where: { id: Number(postId) },
+    });
+    res.status(204).json("삭제완료");
+  }
+
+  res.status(405).json({ message: "Method not allowed" });
 }

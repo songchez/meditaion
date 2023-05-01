@@ -1,6 +1,8 @@
 import { Post } from "@prisma/client";
 import prisma from "@/lib/prisma";
 import PostPageForRead from "@/components/postPageForRead";
+import Deletebutton from "@/components/deletebutton";
+import Modifybtn from "@/components/modifybtn";
 
 async function getPost(postId: string) {
   const post = await prisma.post.findUnique({
@@ -79,6 +81,10 @@ export default async function Postpage({ params: { slug } }: Ppost) {
         <p className="text-xs text-gray-500 text-center">
           이 포스트를 {post.views}명이🧔🏻‍♀️보았습니다
         </p>
+        <div className="flex justify-center gap-1">
+          <Deletebutton slug={slug} />
+          <Modifybtn />
+        </div>
       </div>
     );
   }

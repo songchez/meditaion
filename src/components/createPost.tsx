@@ -4,10 +4,18 @@ import { useState } from "react";
 import { toast } from "react-hot-toast";
 import Image from "next/image";
 import riceIcon from "public/icon_rice.svg";
-import ReactQuill from "react-quill";
+
 import "react-quill/dist/quill.snow.css";
+import "@/styles/customQuill.css";
+
 import { QueryFinder } from "@/components/utils/queryfinder";
 import ReadInput from "@/components/readInput";
+import dynamic from "next/dynamic";
+import { modules } from "./utils/quillModule";
+
+const ReactQuill = dynamic(() => import("react-quill"), {
+  loading: () => <p>Loading...</p>,
+});
 
 export default function CreatePost({ sessionEmail }: { sessionEmail: string }) {
   const [formData, setFormData] = useState({ title: "", content: "" });
@@ -83,6 +91,7 @@ export default function CreatePost({ sessionEmail }: { sessionEmail: string }) {
             onChange={(text) => {
               setFormData({ ...formData, content: text });
             }}
+            modules={modules}
             placeholder="말씀을 읽으면서 📒 묵상한 내용을 적어보세요."
           />
           <div className="flex justify-center m-4">

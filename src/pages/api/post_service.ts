@@ -43,9 +43,11 @@ export default async function handler(
     });
     res.status(201).json(post);
   } else if (req.method === "DELETE") {
-    const { postId } = req.body;
+    //쿼리스트링으로 통신. 너무 중요한 정보는 쓰면 안되것다.
+    const query = req.query;
+    const { id } = query;
     const deletePost = await prisma.post.delete({
-      where: { id: Number(postId) },
+      where: { id: Number(id) },
     });
     res.status(204).json("삭제완료");
   } else {

@@ -1,0 +1,40 @@
+.quill.ql-snow {
+  border-radius: 12px;
+  border: 1px solid #111111;
+}
+.ql-container.ql-snow {
+  border: 0px solid #ccc;
+}
+
+.ql-editor.ql-blank::before {
+  color: #f7bedf;
+}
+
+.ql-editor.ql-snow {
+  line-height: 2;
+  border: 0px solid #ccc;
+  padding: 2px;
+}
+
+.ql-toolbar.ql-snow {
+  background-image: linear-gradient(
+    to right bottom,
+    #f7bedb,
+    #ffbdc7,
+    #ffc4a5,
+    #ffd582,
+    #fcee6f
+  );
+  box-shadow: 1px 2px 2px #f7bedb;
+  border-radius: 25px;
+  border: none;
+}
+
+.ql-toolbar button.active {
+  background-color: #ccc;
+}
+
+.ql-toolbar button.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}

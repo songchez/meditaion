@@ -41,7 +41,7 @@ Install 성경묵상웹앱 with npm
 
 ## Deployment
 
-준비중...
+<https://meditation-six.vercel.app/>
 
 ## License
 

@@ -49,8 +49,8 @@ Install 성경묵상웹앱 with npm
 
 ## 기술스택
 
-Frontend : Next.js 13, daisyUI
-Backend : Prisma, Nextauth
+Frontend : Next.js 13.3.1, daisyUI 2.51.5
+Backend : Prisma 4.13, Nextauth 4.21
 FrontServer : Vercel
 Backserver : PlanetScale
 
